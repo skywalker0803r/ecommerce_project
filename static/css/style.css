@@ -1,0 +1,61 @@
+/* Custom styles for the e-commerce store */
+
+/* Add some padding around the page content */
+.container {
+    padding-top: 30px;
+}
+
+/* Center the heading */
+h1 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+/* Product card styles */
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Add some spacing to the card body */
+.card-body {
+    padding: 20px;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Footer styles */
+footer {
+    background-color: #f8f9fa;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    margin-bottom: 0;
+    color: #666;
+}

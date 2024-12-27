@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Checkout</h2>
+
+        {% if cart_items %}
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Order Summary</h4>
+
+                <!-- 顯示商品列表 -->
+                <ul class="list-group mb-3">
+                    {% for item in cart_items %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ item.product.name }} (x{{ item.quantity }})
+                        <span>${{ item.quantity * item.product.price }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- 顯示總價 -->
+                <h4 class="text-end">Total: ${{ total_price }}</h4>
+
+                <!-- 支付按鈕 -->
+                <form action="{{ url_for('checkout') }}" method="POST">
+                    <button type="submit" class="btn btn-primary w-100">Pay Now</button>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <p class="text-center">Your cart is empty. <a href="{{ url_for('index') }}">Go shopping now!</a></p>
+        {% endif %}
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="alert alert-{{ messages[0][0] }}">
+      {{ messages[0][1] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
